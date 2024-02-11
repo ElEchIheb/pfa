@@ -1,0 +1,24 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Nouvelle évaluation
+{% endblock %}
+
+
+{% block body %}
+	<center>
+		<h1>choisir le nom et prenom du candidat
+		</h1>
+	</center>
+	<center>
+		<form method="post" action="{{ path('evaluation_display') }}">
+			<select class="btn btn-primary dropdown-toggle" data-toggle="dropdown" value="choisir" name="user">
+				{% for user in users %}
+					<option value="{{ user.firstname }}_{{ user.lastname }}">{{ user.firstname }}
+						{{ user.lastname }}</option>
+				{% endfor %}
+			</select>
+			<br><br><br><br>
+			<input type="submit" class="btn btn-outline-primary" value="Afficher">
+		</form>
+	</center>
+{% endblock %}

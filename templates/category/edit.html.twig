@@ -1,0 +1,12 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Modifier Categorie
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="h3 mb-4 text-gray-800">Modifier Categorie</h1>
+
+		{{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
+	</div>
+{% endblock %}

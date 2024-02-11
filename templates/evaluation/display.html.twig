@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Nouvelle évaluation
+{% endblock %}
+
+
+{% block body %}
+
+	<center>
+		<h1>Auto Evaluation
+		</h1>
+
+		<table style="width:90%" border="2">
+			<thead>
+				<tr>
+					<th class="table-primary">Nom de compétence</th>
+					<th class="table-primary">Niveau d'évaluation</th>
+					<th class="table-primary">Commentaire</th>
+					<th class="table-primary">ID de compétence</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for evaluation in evaluations %}
+					<tr>
+						<td>{{ evaluation.getCompetenceName() }}</td>
+						<td>{{ evaluation.getEvaluationLevel() }}</td>
+						<td>{{ evaluation.commentaire }}</td>
+						<td>{{ evaluation.competence.id }}</td>
+
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</center>
+{% endblock %}

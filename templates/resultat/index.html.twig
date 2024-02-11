@@ -1,0 +1,47 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Resultat Test
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="h3 mb-4 text-gray-800">Resultat Test géneral</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>User email</th>
+					<th>Score (%)</th>
+					<th>Resultat</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for resultat in resultats %}
+					<tr>
+						<td>{{ resultat.id }}</td>
+						<td>{{ resultat.user.email }}</td>
+						<td>{{ resultat.score }}</td>
+						<td>
+							{% if resultat.resultat %}
+								<a class="btn btn-primary" href="{{ path('pdf_show', {'filename': resultat.resultat}) }}" target="_blank">
+									<i class="fa fa-eye"></i>
+								</a>
+							{% else %}
+								N/A
+							{% endif %}
+						</td>
+						<td>
+							{{ include('resultat/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">No records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

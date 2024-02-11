@@ -1,0 +1,49 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Liste des options
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="h3 mb-4 text-gray-800">Liste des options</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Question</th>
+					<th>Option</th>
+					<th>Point</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for option in options %}
+					<tr>
+						<td>{{ option.id }}</td>
+						<td>
+							{% if option.question %}
+								{{ option.question.questiontext }}
+								{# Replace "name" with the correct property for the question's text #}
+							{% else %}
+								No associated question
+							{% endif %}
+						</td>
+						<td>{{ option.optiontext }}</td>
+						<td>{{ option.point }}</td>
+						<td>
+							<div class="d-flex">
+								<a class="btn btn-success rounded mr-2" href="{{ path('app_option_edit', {'id': option.id}) }}">Modifier</a>
+								{{ include('option/_delete_form.html.twig') }}
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

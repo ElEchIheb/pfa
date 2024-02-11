@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier test psychologique
+{% endblock %}
+
+
+{% block body %}
+	<center>
+		<h1>choisir le test
+		</h1><br>
+	</center>
+	<center>
+
+
+		<form action="{{ path('handle_select_psy') }}" method="post" id="psySelectForm">
+			<select class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="psy" onchange="document.getElementById('psySelectForm').submit()">
+				<option value="">Sélectionnez un psy</option>
+				{% for psy in psys %}
+					<option  value="{{ psy.id }}">{{ psy.nom }}</option>
+				{% endfor %}
+			</select>
+		</form>
+
+
+	</center>
+{% endblock %}

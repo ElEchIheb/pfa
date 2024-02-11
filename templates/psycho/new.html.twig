@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle évaluation
+{% endblock %}
+
+
+{% block body %}
+
+
+	<div>
+		.
+		<br>
+		<br>
+		<br>
+		<br></div>
+
+
+	<h1>Test d'évaluation Psychologique</h1>
+	<table border="2" class="table >
+				<thead class=" thead-dark" >
+				<tr>
+				<th>Entretien</th>
+				<th style=" padding-right: 20px;">Appréciation</th>
+	<th>Commentaire</th>
+	<th>Soumettre</th>
+	{# Espace pour le bouton de soumission #}
+</tr></thead><tbody>
+{% for item in forms %}
+	<tr>
+		<td>{{ item.psy.getNom() }}</td>
+		{# Ensure the Psy entity has a getNom() method. #}
+		<td>
+			{{ form_start(item.form) }}
+			<input
+			type="hidden" name="psy_id" value="{{ item.psy.id }}">
+			{# Updated the field name. #}
+			{{ form_row(item.form.evaluation_level) }}
+		</td>
+		<td>
+			{{ form_widget(item.form.commentaire) }}
+
+		</td>
+		<td>
+			<button type="submit" class="btn btn-outline-primary">Soumettre</button>
+		</td>
+		{{ form_end(item.form) }}
+	</tr>
+{% endfor %}</tbody></table><a href="{{ path('loginsucces') }}" class="btn btn-outline-success">Menu principal</a>{% endblock %}

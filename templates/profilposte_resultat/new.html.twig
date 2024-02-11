@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ProfilposteResultat{% endblock %}
+
+{% block body %}
+    <h1>Create new ProfilposteResultat</h1>
+
+    {{ include('profilposte_resultat/_form.html.twig') }}
+
+    <a href="{{ path('app_profilposte_resultat_index') }}">back to list</a>
+{% endblock %}

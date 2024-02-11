@@ -1,0 +1,22 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Suppression d'évaluations
+{% endblock %}
+
+{% block body %}
+	<center>
+		<form method="post">
+			<h2>
+				<label for="userSelect">Sélectionnez un utilisateur :</label>
+			</h2>
+			<br><br>
+			<select class="btn btn-danger dropdown-toggle" id="userSelect" name="userSelect">
+				{% for user in users %}
+					<option value="{{ user['firstname'] ~ ',' ~ user['lastname'] }}">{{ user['firstname'] ~ ' ' ~ user['lastname'] }}</option>
+				{% endfor %}
+			</select>
+			<br><br><br><br>
+			<button class="btn btn-outline-danger" type="submit">Supprimer</button>
+		</form>
+	</center>
+{% endblock %}

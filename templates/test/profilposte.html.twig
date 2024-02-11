@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil poste{% endblock %}
+
+{% block body %}
+    <div style="border: 2px solid #ccc; border-radius: 5px; padding: 20px; margin: 0 auto; max-width: 900px; margin-top: 82px;margin-bottom: 82px;">
+        <h1 class="h3 mb-5" style="text-align: center;color: #0d6efd;">Profil poste</h1>
+
+        <h6 id="timer" style="text-align: center;color: Red;"></h6> <!-- Timer display -->
+
+        <form id="testForm" action="{{ path('profilposte_result') }}" method="POST">
+            <h6 class='my-4' style="color: #0d6efd;">Auto-Evaluation/ Self Appréciation :</h6>
+            {% for question in questions %}
+                {% if question.category.name == "Questions profilposte" %}
+                    <div style="border: 2px solid #ddd; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+                        <p>{{ question.questiontext }}</p>
+                        <ul style="list-style-type: none;">
+                            {% for option in question.composer %}
+                                <li style="list-style-type: none; padding-left: 1.5em; text-indent: -1em;">
+                                    <label>
+                                        <input type="radio" name="option_{{ question.id }}" value="{{ option.id }}">
+                                        {{ option.optiontext }}
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+
+            <button class="btn btn-primary my-3" type="submit">Envoyer</button>
+        </form>
+    </div>
+
+   <script>
+    // Timer in seconds (30 minutes = 1800 seconds)
+    var timerSeconds = 1800;
+
+    function startTimer() {
+        var timer = setInterval(function() {
+            var minutes = Math.floor(timerSeconds / 60);
+            var seconds = timerSeconds % 60;
+
+            // Display the timer
+            document.getElementById("timer").textContent = "Temps restant : " + minutes + "m " + seconds + "s";
+
+            timerSeconds--;
+
+            if (timerSeconds < 0) {
+                clearInterval(timer);
+                document.getElementById("testForm").submit();
+            }
+        }, 1000);
+    }
+
+    startTimer();
+</script>
+{% endblock %}

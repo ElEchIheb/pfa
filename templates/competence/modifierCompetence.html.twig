@@ -1,0 +1,15 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier Compétence
+{% endblock %}
+
+{% block body %}
+	<center>
+		<h1>Modifier Compétence</h1><br>
+
+		{{ form_start(form) }}
+		{{ form_widget(form) }}<br>
+		<button type="submit" class="btn btn-warning">Modifier</button>
+	</center>
+	{{ form_end(form) }}
+{% endblock %}

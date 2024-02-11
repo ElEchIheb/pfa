@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier test psychologique
+{% endblock %}
+
+
+{% block body %}
+	<center>
+		<h1>choisir le test
+		</h1><br>
+	</center>
+	<center>
+
+
+		<form action="{{ path('handle_select_competence') }}" method="post" id="competenceSelectForm">
+			<select class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="competence" onchange="document.getElementById('competenceSelectForm').submit()">
+				<option value="">Sélectionnez une compétence</option>
+				{% for competence in competences %}
+					<option value="{{ competence.id }}">{{ competence.nom }}</option>
+				{% endfor %}
+			</select>
+		</form>
+
+
+	</center>
+{% endblock %}

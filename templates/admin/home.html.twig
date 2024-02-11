@@ -1,0 +1,49 @@
+{% extends "admin/base.html.twig" %}
+
+{% block body %}
+	<!-- Begin Page Content -->
+	<div
+		class="container-fluid">
+
+		<!-- Page Heading -->
+		<h1 class="h3 mb-4 text-gray-800">
+			<div class="alert alert-info" role="alert">
+				<p>Vous êtes connecté
+					<a href="{{ path('app_profile') }}" class="btn btn-primary">
+						{% if app.user %}
+							{{ app.user.firstname }}
+						{% endif %}
+					</a>
+				</p>
+			</div>
+
+
+		</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7efVmL7EvgYFlULkuH-30a6h_L12Ik680VA&usqp=CAU" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">Liste D'Auto Evaluation</h5>
+
+							<a href="{{ path('evaluation_select') }}" class="btn btn-primary">Auto Evaluation</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" src="https://c0.wallpaperflare.com/preview/817/823/802/knowledge-spark-flash-hand.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">Liste De Test Psychologique</h5><br>
+							<a href="{{ path('psycho_select') }}" class="btn btn-primary">Test Psychologique</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.container-fluid -->
+{% endblock %}

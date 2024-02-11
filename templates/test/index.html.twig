@@ -1,0 +1,79 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Test géneral{% endblock %}
+
+{% block body %}
+    <div style="border: 2px solid #ccc; border-radius: 5px; padding: 20px; margin: 0 auto; max-width: 900px; margin-top: 82px;margin-bottom: 82px;">
+        <h1 class="h3 mb-5" style="text-align: center;color: #0d6efd;">Test géneral</h1>
+
+        <h6 id="timer" style="text-align: center;color: Red;"></h6> <!-- Timer display -->
+
+        <form id="testForm" action="{{ path('quiz_result') }}" method="POST">
+            <h6 class='my-4' style="color: #0d6efd;">Questions technique :</h6>
+            {% for question in questions %}
+                {% if question.category.name == "Questions technique" %}
+                    <div style="border: 2px solid #ddd; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+                        <p>{{ question.questiontext }}</p>
+                        <ul style="list-style-type: none;">
+                            {% for option in question.composer %}
+                                <li style="list-style-type: none; padding-left: 1.5em; text-indent: -1em;">
+                                    <label>
+                                        <input type="radio" name="option_{{ question.id }}" value="{{ option.id }}">
+                                        {{ option.optiontext }}
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <h5 class='my-4' style="color: #0d6efd;">Questions psychotechnique :</h5>
+            {% for question in questions %}
+                {% if question.category.name == "Questions psychotechnique" %}
+                    <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 20px;">
+                        <p>{{ question.questiontext }}</p>
+                        <ul style="list-style-type: none;">
+                            {% for option in question.composer %}
+                                <li style="list-style-type: none; padding-left: 1.5em; text-indent: -1em;">
+                                    <label>
+                                        <input type="radio" name="option_{{ question.id }}" value="{{ option.id }}">
+                                        {{ option.optiontext }}
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <button class="btn btn-primary my-3" type="submit">Envoyer</button>
+        </form>
+    </div>
+
+<script>
+    // Timer in seconds (1 hour and 30 minutes = 5400 seconds)
+    var timerSeconds = 5400;
+
+    function startTimer() {
+        var timer = setInterval(function() {
+            var hours = Math.floor(timerSeconds / 3600);
+            var minutes = Math.floor((timerSeconds % 3600) / 60);
+            var seconds = timerSeconds % 60;
+
+            // Display the timer
+            document.getElementById("timer").textContent = "Temps restant : " + hours + "h " + minutes + "m " + seconds + "s";
+
+            timerSeconds--;
+
+            if (timerSeconds < 0) {
+                clearInterval(timer);
+                document.getElementById("testForm").submit();
+            }
+        }, 1000);
+    }
+
+    startTimer();
+</script>
+
+{% endblock %}

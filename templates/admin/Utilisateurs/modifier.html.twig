@@ -1,0 +1,65 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+<div class="w-4/5 m-auto pt-40">
+	<h1 class="text-6xl text-center pb-12">
+		Modifier utilisateur
+	</h1>
+
+	{{ form_start(form) }}
+
+	<div>
+		{{ form_label(form.firstname, 'Prénom', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.firstname) }}
+	</div>
+
+	<div>
+		{{ form_label(form.lastname, 'Nom', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.lastname) }}
+	</div>
+
+	<div>
+		{{ form_label(form.email, 'Email', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.email) }}
+	</div>
+
+	<div>
+		{{ form_label(form.plainPassword, 'Mot de passe', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.plainPassword, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.plainPassword) }}
+	</div>
+
+	<div>
+		{{ form_label(form.tel, 'Téléphone', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.tel, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.tel) }}
+	</div>
+
+	<div>
+		{{ form_label(form.poste, 'Poste', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.poste, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.poste) }}
+	</div>
+
+	<div>
+		{{ form_label(form.cv, 'CV', {'label_attr': {'class': 'text-sm'}}) }}
+		{{ form_widget(form.cv, {'attr': {'class': 'form-control-file'}}) }}
+		{{ form_errors(form.cv) }}
+	</div>
+
+	<div>
+		{{ form_label(form.RGPDConsent, 'J\'accepte les termes', {'label_attr': {'class': 'text-sm'}}) }}
+            {{ form_widget(form.RGPDConsent, {'attr': {'class': ''}}) }}
+            {{ form_errors(form.RGPDConsent) }}
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Modifier
+        </button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "admin/login.html.twig" %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<section class="ftco-section">
+		<div class="container">
+
+			<div class="row justify-content-center">
+				<div class="col-md-7 col-lg-5">
+					<div class="wrap">
+						<div class="login-wrap p-4 p-md-5">
+							<h2 class="title">Inscription</h2>
+							{{ form_start(registrationForm) }}
+
+							<fieldset class='mb-3'>
+								<legend>Identité</legend>
+								{{ form_row(registrationForm.firstname) }}
+								{{ form_row(registrationForm.lastname) }}
+
+							</fieldset>
+							<fieldset class='mb-3'>
+								<legend>Coordonnées</legend>
+								{{ form_row(registrationForm.tel) }}
+							</fieldset>
+
+							{{ form_row(registrationForm.email) }}
+
+							{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+							{{ form_row(registrationForm.poste) }}
+							{{ form_row(registrationForm.cv) }}
+							{{ form_row(registrationForm.RGPDConsent) }}
+
+							<button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire</button>
+							<a href="{{ path('app_login') }}" class='btn btn-secondary'>Me connecter</a>
+							{{ form_end(registrationForm) }}
+							<div></div>
+							<div></div>
+						</div>
+					</section>
+					<div>
+					{% endblock %}

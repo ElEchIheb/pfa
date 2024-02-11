@@ -1,0 +1,13 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Modifier l'option
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="h3 mb-4 text-gray-800">Modifier l'option</h1>
+
+		{{ include('option/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+	</div>
+{% endblock %}

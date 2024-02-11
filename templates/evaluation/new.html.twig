@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle évaluation
+{% endblock %}
+
+
+{% block body %}
+	<div>
+		.
+		<br>
+		<br>
+		<br>
+		<br></div>
+
+
+	<h1>Test d'auto évaluation</h1>
+	<table border="2" class="table">
+		<thead>
+			<tr>
+				<th>Nom de compétence</th>
+				<th>Appréciation</th>
+				<th>Commentaire</th>
+				<th>Soumettre</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in forms %}
+				<tr>
+					<td>{{ item.competence.getNom() }}
+					</td>
+					<td>
+						{{ form_start(item.form) }}
+						<input type="hidden" name="competence_id" value="{{ item.competence.id }}">
+						{{ form_row(item.form.evaluation_level) }}
+					</td>
+					<td>
+						{{ form_widget(item.form.commentaire) }}
+
+					</td>
+					<td>
+						<button type="submit" class="btn btn-outline-primary">Soumettre</button>
+					</td>
+					{{ form_end(item.form) }}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{{ path('loginsucces') }}" class="btn btn-outline-success">Menu principal</a>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+
+{{ form_label(form.optiontext, 'Option') }}
+{{ form_widget(form.optiontext , {'attr': {'class': 'form-control'}}) }}
+{{ form_errors(form.optiontext) }}
+
+{{ form_label(form.question, 'Question') }}
+{{ form_widget(form.question, {'attr': {'class': 'form-control'}}) }}
+{{ form_errors(form.question) }}
+
+{{ form_label(form.point, 'Point') }}
+{{ form_widget(form.point, {'attr': {'class': 'form-control'}}) }}
+{{ form_errors(form.point) }}
+
+<button class="btn btn-primary mt-5">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(form) }}

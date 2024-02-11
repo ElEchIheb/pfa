@@ -1,0 +1,77 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Liste des utilisateurs
+{% endblock %}
+{% block body %}
+	<!-- Begin Page Content -->
+	<div
+		class="container-fluid">
+
+		<!-- Page Heading -->
+		<h1 class="h3 mb-4 text-gray-800">Liste des utilisateurs</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Prénom</th>
+					<th>Nom</th>
+					<th>E-mail</th>
+					<th>Roles</th>
+					<th>Tel</th>
+					<th>Poste</th>
+					<th>CV</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+			{% for user in users %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.firstname }}</td>
+					<td>{{ user.lastname }}</td>
+					<td>{{ user.email }}</td>
+					<td>
+						{% for role in user.roles %}
+							{% if role == "ROLE_ADMIN" %}
+								{% set name = "Administrateur" %}
+								{% set color = "danger" %}
+							{% elseif role == "ROLE_PRODUCT_ADMIN" %}
+								{% set name = "Admin produits" %}
+								{% set color = "warning" %}
+							{% else %}
+								{% set name = "Candidat" %}
+								{% set color = "success" %}
+							{% endif %}
+							<span class="badge bg-{{ color }} text-white">{{ name }}</span>
+						{% endfor %}
+
+					</td>
+					<td>{{ user.tel }}</td>
+					<td>{{ user.poste }}</td>
+					<td>
+						{% if user.cv %}
+							<a class="btn btn-primary" href="{{ asset('uploads/cv/' ~ user.cv) }}">
+								<i class="fa fa-eye"></i>
+							</a>
+						{% else %}
+							<p>CV non disponible.</p>
+						{% endif %}
+					</td>
+
+					<td>
+						<div class="btn-group" role="group">
+							<a href="{{ path('admin_users_modifier', {'id': user.id}) }}" class="btn btn-success rounded mr-2">Modifier</a>
+							<form action="{{ path('admin_users_supprimer', {'id': user.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?');">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+								<button type="submit" class="btn btn-danger">Supprimer</button>
+							</form>
+						</div>
+
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<!-- /.container-fluid -->
+{% endblock %}

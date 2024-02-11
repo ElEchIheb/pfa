@@ -1,0 +1,228 @@
+<!-- Page Wrapper -->
+<div
+	id="wrapper">
+
+	<!-- Sidebar -->
+	<ul
+		class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+		<!-- Sidebar - Brand -->
+		<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('admin_index') }}">
+
+			<div class="sidebar-brand-icon ">
+				<i class='fas fa-user-cog'></i>
+			</div>
+			<div class="sidebar-brand-text mx-3">Admin
+
+				<sup></sup>
+			</div>
+		</a>
+
+		<!-- Divider -->
+		<hr
+		class="sidebar-divider my-0">
+
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item active">
+			<a class="nav-link" href="{{path('admin_index')}}">
+				<i class="fas fa-fw fa-tachometer-alt"></i>
+				<span>Dashboard</span>
+			</a>
+		</li>
+
+		<!-- Divider -->
+		<hr
+		class="sidebar-divider">
+
+		<!-- Heading -->
+		<div class="sidebar-heading">
+			Gestion
+		</div>
+
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				<i class="fa fa-user-circle" style='font-size:18px'></i>
+				<span>Utilisateurs</span>
+			</a>
+			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<a class="collapse-item" href="{{ path('admin_users_index') }}">Liste des utilisateurs</a>
+					<a class="collapse-item" href="{{ url('admin_users_ajouter') }}">Ajouter un utilisateur</a>
+				</div>
+			</div>
+		</li>
+
+		<!-- Nav Item - Utilities Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+				<i class='far fa-file-alt' style='font-size:18px'></i>
+				<span>Tests</span>
+			</a>
+			<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">Categorie :</h6>
+					<a class="collapse-item" href="{{ path('app_category_index') }}">Liste des categories</a>
+					<a class="collapse-item" href="{{ path('app_category_new') }}">Ajouter une categorie</a>
+					<h6 class="collapse-header">Question :</h6>
+					<a class="collapse-item" href="{{ path('app_question_index') }}">Liste des questions</a>
+					<a class="collapse-item" href="{{ path('app_question_new') }}">Ajouter une question</a>
+					<h6 class="collapse-header">Option :</h6>
+					<a class="collapse-item" href="{{ path('app_option_index') }}">Liste des options</a>
+					<a class="collapse-item" href="{{ path('app_option_new') }}">Ajouter une option</a>
+					<h6 class="collapse-header">Auto-évaluation :</h6>
+					<a class="collapse-item" href="{{ path('evaluation_select') }}">Liste d'auto evaluation</a>
+					<a class="collapse-item" href="{{ path('ajouter_competence') }}">Ajouter competence</a>
+					<a class="collapse-item" href="{{ path('select_competence') }}">Modifier competence</a>
+					<a class="collapse-item" href="{{ path('evaluation_delete') }}">Suprimer auto evaluation</a>
+					<h6 class="collapse-header">Evaluation Psychologique  :</h6>
+					<a class="collapse-item" href="{{ path('psycho_select') }}">Liste de questions</a>
+					<a class="collapse-item" href="{{ path('ajouter_psy') }}">Ajouter question d'entretien</a>
+					<a class="collapse-item" href="{{ path('select_psy') }}">Modifier question</a>
+					<a class="collapse-item" href="{{ path('psycho_delete') }}">Suprimer evaluation psy</a>
+				</div>
+			</div>
+		</li>
+
+
+		<!-- Divider -->
+		<hr
+		class="sidebar-divider">
+
+		<!-- Heading -->
+		<div class="sidebar-heading">
+			consultation
+		</div>
+
+		<!-- Nav Item - Charts
+																																																																																								<li class="nav-item">
+																																															
+																																																																																									<a class="nav-link mb-5" href="{{ path('app_resultat_index') }}">
+																																																																																						
+																																																																																										<span>Resultats</span>
+																																																																																									</a>
+																																																																																								</li>-->
+		<li class="nav-item">
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+				<i class="fas fa-fw fa-chart-area"></i>
+				<span>Resultats</span>
+			</a>
+			<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<a class="collapse-item" href="{{ path('app_profilposte_resultat_index') }}">Profil Poste</a>
+					<a class="collapse-item" href="{{ path('app_resultat_index') }}">Test géneral</a>
+					<div class="collapse-divider"></div>
+
+				</div>
+			</div>
+		</li>
+
+		<!-- Sidebar Toggler (Sidebar) -->
+		<div class="text-center d-none d-md-inline mt-5">
+			<button class="rounded-circle border-0" id="sidebarToggle"></button>
+		</div>
+
+	</ul>
+	<!-- End of Sidebar -->
+
+	<!-- Content Wrapper -->
+	<div
+		id="content-wrapper" class="d-flex flex-column">
+
+		<!-- Main Content -->
+		<div
+			id="content">
+
+			<!-- Topbar -->
+			<nav
+				class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+				<!-- Sidebar Toggle (Topbar) -->
+				<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+
+				<!-- Topbar Search -->
+				<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+					<div class="input-group">
+						<input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher..." aria-label="Search" aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-primary" type="button">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+
+				<!-- Topbar Navbar -->
+				<ul
+					class="navbar-nav ml-auto">
+
+					<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+					<li class="nav-item dropdown no-arrow d-sm-none">
+						<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-search fa-fw"></i>
+						</a>
+						<!-- Dropdown - Messages -->
+						<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+							<form class="form-inline mr-auto w-100 navbar-search">
+								<div class="input-group">
+									<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-primary" type="button">
+											<i class="fas fa-search fa-sm"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+
+
+					<!-- Nav Item - Messages -->
+					<li class="nav-item dropdown no-arrow mx-1">
+						<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-envelope fa-fw"></i>
+							<!-- Counter - Messages -->
+							<span class="badge badge-danger badge-counter">7</span>
+						</a>
+						<!-- Dropdown - Messages -->
+						<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+							<h6 class="dropdown-header">
+								Message Center
+							</h6>
+							<a class="dropdown-item d-flex align-items-center" href="#">SuperAdmin : Bonjour, Reunion a 10h du matin
+								<div class="dropdown-list-image mr-3"></div>
+							</a>
+
+							<a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+						</div>
+					</li>
+
+					<div class="topbar-divider d-none d-sm-block"></div>
+
+					<!-- Nav Item - User Information -->
+					<li class="nav-item dropdown no-arrow">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="mr-3 d-none d-lg-inline text-gray-600 small">{{ app.user.firstname }}
+							</span>
+							<img class="img-profile rounded-circle" src="data:image/png;base64,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" alt="">
+						</a>
+						<!-- Dropdown - User Information -->
+						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+							<a class="dropdown-item" href="{{ path('app_profile') }}">
+								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+								Profile
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="{{ path('app_logout') }}">
+								<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+								Logout
+							</a>
+						</div>
+					</li>
+
+				</ul>
+
+			</nav>
+			<!-- End of Topbar -->

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile candidat
+{% endblock %}
+
+{% block body %}
+	<!-- Begin Page Content -->
+	<div
+		class="container-fluid" style='margin-top:90px;'>
+		<!-- Page Heading -->
+		<h1 class="h3 mb-4 text-gray-800">Utilisateur -
+			{{ user.lastname }}
+			{{ user.firstname }}</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>ID:</th>
+					<td>{{ user.id }}</td>
+				</tr>
+				<tr>
+					<th>Prénom:</th>
+					<td>{{ user.firstname }}</td>
+				</tr>
+				<tr>
+					<th>Nom:</th>
+					<td>{{ user.lastname }}</td>
+				</tr>
+				<tr>
+					<th>E-mail:</th>
+					<td>{{ user.email }}</td>
+				</tr>
+				<tr>
+					<th>Rôles:</th>
+					<td>
+						{% for role in user.roles %}
+							{% if role == "ROLE_ADMIN" %}
+								{% set name = "Administrateur" %}
+								{% set color = "danger" %}
+							{% elseif role == "ROLE_PRODUCT_ADMIN" %}
+								{% set name = "Admin produits" %}
+								{% set color = "warning" %}
+							{% else %}
+								{% set name = "Candidat" %}
+								{% set color = "success" %}
+							{% endif %}
+							<span class="badge bg-{{ color }} text-white">{{ name }}</span>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<th>Téléphone:</th>
+					<td>{{ user.tel }}</td>
+				</tr>
+				<tr>
+					<th>Poste:</th>
+					<td>{{ user.poste }}</td>
+				</tr>
+				<tr>
+					<th>CV:</th>
+					<td>
+						{% if user.cv %}
+							<a class="btn btn-primary" href="{{ asset('uploads/cv/' ~ user.cv) }}">Voir cv</a>
+						{% else %}
+							<p>CV non disponible.</p>
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- /.container-fluid -->
+	{% for role in user.roles %}
+		{% if role == "ROLE_ADMIN" %}
+			<a href="{{ path('admin_index') }}" class="btn btn-outline-info">Menu Principal</a>
+		{% endif %}
+{% endfor %}
+	{% endblock %}
